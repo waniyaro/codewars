@@ -1,0 +1,4 @@
+def find(arr, el):
+    return arr.index(el) if el in arr else 'Not found'
+    
+https://www.codewars.com/kata/5703c093022cd1aae90012c9
