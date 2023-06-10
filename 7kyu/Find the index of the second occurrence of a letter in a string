@@ -1,0 +1,6 @@
+def second_symbol(string, letter):
+    first = string.find(letter)
+    second = string.find(letter, first + 1)
+    return second if second != -1 else -1
+
+https://www.codewars.com/kata/63f96036b15a210058300ca9
