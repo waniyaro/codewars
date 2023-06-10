@@ -1,0 +1,7 @@
+def array_plus_array(arr1,arr2):
+    total = 0
+    for i in range(len(arr1)):
+        total += arr1[i] + arr2[i]
+    return total
+    
+https://www.codewars.com/kata/5a2be17aee1aaefe2a000151    
