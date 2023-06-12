@@ -1,0 +1,7 @@
+def strings_construction(a, b):
+    time = 20
+    for i in range(0, len(a)):
+        time = int(b.count(a[i])/a.count(a[i]))
+    return time
+    
+    
