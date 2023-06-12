@@ -1,0 +1,45 @@
+import re
+
+class ParseHer(object):
+    
+    RADICALS = ["meth", "eth", "prop", "but", "pent", "hex", "hept", "oct", "non", "dec", "undec", "dodec", "tridec", "tetradec", "pentadec", "hexadec", "heptadec", "octadec", "nonadec", "methan", "ethan", "propan"]
+    MULTIPLIERS = ["di", "tri", "tetra", "penta", "hexa", "hepta", "octa", "nona", "deca", "undeca", "dodeca", "trideca", "tetradeca", "pentadeca", "hexadeca", "heptadeca", "octadeca", "nonadeca"]
+    SUFFIXES = ["ol", "al", "one", "oic acid", "carboxylic acid", "oate", "ether", "amide", "amine", "imine", "benzene", "thiol", "phosphine", "arsine"]
+    PREFIXES = ["cyclo", "hydroxy", "oxo", "carboxy", "oxycarbonyl", "anoyloxy", "formyl", "oxy", "amido", "amino", "imino", "phenyl", "mercapto", "phosphino", "arsino", "fluoro", "chloro", "bromo", "iodo"]
+    
+    def __init__(self, name):
+        self.name = name
+    
+    def parse(self):
+        formula = {}
+        
+        if self.name in self.RADICALS:
+            formula['C'] = 1
+            formula['H'] = (self.RADICALS.index(self.name))
+        else:
+            components = re.findall(r'[A-Z][a-z]*\d*', self.name)
+            for component in components:
+                element = re.findall(r'[A-Z][a-z]*', component)[0]
+                count = re.findall(r'\d+', component)
+                count = int(count[0]) if count else 1
+                if element in formula:
+                    formula[element] += count
+                else:
+                    formula[element] = count
+        
+        return formula
+# Пример 1
+molecule1 = ParseHer("methan")
+print(molecule1.parse())  # Ожидаемый результат: {'C': 1, 'H': 4}
+
+# Пример 2
+molecule2 = ParseHer("butane")
+print(molecule2.parse())  # Ожидаемый результат: {'C': 4, 'H': 10}
+
+# Пример 4
+molecule4 = ParseHer("cyclohexanol")
+print(molecule4.parse())  # Ожидаемый результат: {'C': 6, 'H': 12, 'O': 1}
+
+# Пример 6
+molecule6 = ParseHer("benzene")
+print(molecule6.parse())  # Ожидаемый результат: {'C': 6, 'H': 6}
