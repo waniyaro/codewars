@@ -1,0 +1,4 @@
+import re
+
+def count_smileys(arr: list) -> int:
+    return len(re.findall('[:;][-~]?[)D]', ' '.join(arr)))
