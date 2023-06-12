@@ -1,0 +1,28 @@
+from typing import Tuple
+import math
+
+def four_squares(n):
+    a_limit = int(math.sqrt(n)) + 1
+
+    # Предварительно вычисляем квадраты чисел
+    squares = [i * i for i in range(a_limit)]
+
+    for a in range(a_limit):
+        a_square = squares[a]
+        b_limit = int(math.sqrt(n - a_square)) + 1
+
+        for b in range(b_limit):
+            b_square = squares[b]
+            c_square = n - a_square - b_square
+
+            if c_square < 0:
+                break
+
+            c = int(math.sqrt(c_square))
+            d_square = n - a_square - b_square - c * c
+            d = int(math.sqrt(d_square))
+
+            if d * d == d_square:
+                return a, b, c, d
+
+    return 0, 0, 0, 0
