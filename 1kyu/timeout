@@ -29,7 +29,7 @@ def four_squares(n):
     return 0, 0, 0, 0
 
 
-LAST UPD.
+LAST UPD.😥
 from typing import Tuple
 import math
 
@@ -49,6 +49,35 @@ def four_squares(n: int) -> Tuple[int, int, int, int]:
 
             c = int(math.sqrt(c_square))
             d_square = n - a_square - b_square - c * c
+            d = int(math.sqrt(d_square))
+
+            if d * d == d_square:
+                return a, b, c, d
+            elif d * d > d_square:
+                break
+
+    return 0, 0, 0, 0
+god damn❤️
+from typing import Tuple
+import math
+
+def four_squares(n: int) -> Tuple[int, int, int, int]:
+    a_limit = int(math.sqrt(n)) + 1
+
+    for a in range(a_limit):
+        a_square = a * a
+        b_limit = int(math.sqrt(n - a_square)) + 1
+
+        for b in range(b_limit):
+            b_square = b * b
+            c_square = n - a_square - b_square
+
+            c = int(math.sqrt(c_square))
+            d_square = n - a_square - b_square - c * c
+
+            if d_square < 0:
+                continue
+
             d = int(math.sqrt(d_square))
 
             if d * d == d_square:
