@@ -1,0 +1,13 @@
+https://www.codewars.com/kata/526dbd6c8c0eb53254000110
+from string import ascii_lowercase
+
+
+def alphanumeric(password: str) -> bool:
+    if not password:
+        return False
+    for i in password:
+        if (i.lower() in ascii_lowercase) or (i in '0123456789'):
+            continue
+        else:
+            return False
+    return True
