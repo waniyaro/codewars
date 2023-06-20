@@ -1,3 +1,4 @@
+https://www.codewars.com/kata/58b38256e51f1c2af0000081
 def best_match(goals1, goals2):
     goal_diff = []
     result = []
